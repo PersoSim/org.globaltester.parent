@@ -9,7 +9,7 @@
 
   <properties>
     <tycho.version>0.23.0</tycho.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
   </properties>
 
   <repositories>
@@ -22,6 +22,15 @@
 
   <build>
     <plugins>
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-compiler-plugin</artifactId>
+	<version>${tycho.version}</version>
+	<configuration>
+ 	   <compilerArgument>-err:-forbidden</compilerArgument>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
