@@ -39,7 +39,7 @@
             <phase>test</phase>
             <configuration>
               <testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
-              <argLine>-javaagent:../../org.globaltester.base/org.globaltester.base.test/lib/jmockit.jar</argLine>
+              <argLine>-javaagent:../../org.globaltester.lib.jmockit/org.globaltester.lib.jmockit/jmockit.jar</argLine>
             </configuration>
             <goals>
               <goal>test</goal>
