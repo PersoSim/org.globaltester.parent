@@ -1,3 +1,9 @@
+Version 0.1.1 (18.02.2016)
+
+* added repo .gitignore
+* Updated the product changelog and all versions
+
+
 Version 0.1.0 (29.01.2016)
 
 * Provides the jMockit library in version 1.20
