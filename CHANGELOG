@@ -1,3 +1,9 @@
+Version 0.1.2 (29.02.2016)
+
+* Make UpdateSites self-contained
+* Include default qualifier for nightly builds
+
+
 Version 0.1.1 (18.02.2016)
 
 * added repo .gitignore
