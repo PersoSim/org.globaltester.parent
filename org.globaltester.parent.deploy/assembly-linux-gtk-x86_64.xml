@@ -1,0 +1,12 @@
+<assembly>
+    <id>linux.gtk.x86_64</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>target/products/${project.artifactId}/linux/gtk/x86_64</directory>
+            <outputDirectory/>
+        </fileSet>
+    </fileSets>
+</assembly>

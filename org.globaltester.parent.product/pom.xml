@@ -5,30 +5,20 @@
   <parent>
     <groupId>org.globaltester</groupId>
     <artifactId>org.globaltester.parent</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2-SNAPSHOT</version>
     <relativePath>../../org.globaltester.parent/org.globaltester.parent/</relativePath>
   </parent>
   <groupId>org.globaltester</groupId>
   <artifactId>org.globaltester.parent.product</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <profiles>
     <profile>
-      <id>products-false</id>
+      <id>profile-materialize-products</id>
       <activation>
         <property>
-            <name>products</name>
-            <value>false</value>
-        </property>
-      </activation>
-    </profile>
-    <profile>
-      <id>products-install</id>
-      <activation>
-        <property>
-            <name>products</name>
-            <value>install</value>
+            <name>!skipInstall</name>
         </property>
       </activation>
       <build>
@@ -54,12 +44,10 @@
       </build>
     </profile>
     <profile>
-      <id>products-full</id>
+      <id>profile-archive-products</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
         <property>
-            <name>products</name>
-            <value>full</value>
+            <name>!skipZip</name>
         </property>
       </activation>
       <build>
@@ -73,12 +61,6 @@
               <source>repository</source>
             </configuration>
             <executions>
-              <execution>
-                <id>materialize-products</id>
-                <goals>
-                  <goal>materialize-products</goal>
-                </goals>
-              </execution>
               <execution>
                 <id>archive-products</id>
                 <goals>
