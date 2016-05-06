@@ -1,7 +1,28 @@
-Version 0.1.2 (29.02.2016)
+Version 0.2.0 (06.05.2016)
 
+* update to mars repositories
+* Merge branch 'usr/amay/marsBasedProducts'
+* Use current Eclipse Mars as base for GlobalTester products
+* Merge branch 'usr/cstroh/opensourcingPlatform'
+* Add README.md
+* Add LICENSE and NOTICE files for our code
+* Add LICENSE and NOTICE files to gitattributes
+* Merge remote-tracking branch 'origin/usr/cstroh/gtProducts'
+* Parent pom for new GT Prove product poms
+* Merge branch 'usr/amay/releaseBuild'
+* Merge branch 'usr/cstroh/optionalProductBuild'
+* Removed osx from target-platforms
+* Parent pom for products to reduce code redundancy and allow optionality
+* Update version numbers in POM
+* Remove anmespaces from POMs
+* update parent pom version
+* Updated the changelog
+* Merge branch 'usr/amay/hotfixVersioning'
+* Merge remote-tracking branch 'origin/usr/cstroh/fixGitAttributes'
+* Replace gitattributes by file from o.g.dev
 * Make UpdateSites self-contained
 * Include default qualifier for nightly builds
+* Code maintenance
 
 
 Version 0.1.1 (18.02.2016)
