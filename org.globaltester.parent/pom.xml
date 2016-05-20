@@ -7,7 +7,8 @@
   <packaging>pom</packaging>
   <properties>
     <tycho.version>0.24.0</tycho.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <forceContextQualifier>SNAPSHOT</forceContextQualifier>
   </properties>
   <repositories>
     <repository>
@@ -18,6 +19,20 @@
   </repositories>
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>parse-version</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-compiler-plugin</artifactId>
@@ -83,5 +98,6 @@
         </configuration>
       </plugin>
     </plugins>
+    <finalName>${project.artifactId}-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${forceContextQualifier}</finalName>
   </build>
 </project>

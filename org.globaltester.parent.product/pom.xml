@@ -58,6 +58,12 @@
             <configuration>
               <directorRuntime>standalone</directorRuntime>
               <source>repository</source>
+              <products>
+                <product>
+                  <id>${project.artifactId}</id>
+                  <archiveFileName>${project.artifactId}-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${forceContextQualifier}</archiveFileName>
+                </product>
+              </products>
             </configuration>
             <executions>
               <execution>
