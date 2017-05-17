@@ -14,6 +14,13 @@
         <sonar.language>java</sonar.language>
         <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
         <sonar.scm.disabled>true</sonar.scm.disabled>
+        <sonar.exclusions>**/*Test.java,**/*[cC]rossover*</sonar.exclusions>
+	<!-- 
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.itReportPath>${sonar.jacoco.itReportPath}</sonar.jacoco.itReportPath>
+        <sonar.jacoco.reportPath>${sonar.jacoco.reportPath}</sonar.jacoco.reportPath>
+	-->
 
   </properties>
   <repositories>
@@ -103,21 +110,11 @@
           </environments>
         </configuration>
       </plugin>
- 
-            <!-- sonarqube integration -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>${sonar-maven-plugin.version}</version>
-                <configuration>
-                    <!-- <sonar.scm.disabled>true</sonar.scm.disabled> -->
-                    <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-                    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-                    <sonar.jacoco.itReportPath>${sonar.jacoco.itReportPath}</sonar.jacoco.itReportPath>
-                    <sonar.jacoco.reportPath>${sonar.jacoco.reportPath}</sonar.jacoco.reportPath>
-                    <sonar.exclusions>**/test/*,**/crossover/**</sonar.exclusions>
-                </configuration>
-            </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>${sonar-maven-plugin.version}</version>
+      </plugin>
 
     </plugins>
     <finalName>${project.artifactId}-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${forceContextQualifier}</finalName>
