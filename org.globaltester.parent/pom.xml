@@ -5,24 +5,33 @@
   <artifactId>org.globaltester.parent</artifactId>
   <version>3.2.2-SNAPSHOT</version>
   <packaging>pom</packaging>
+
   <properties>
-    <tycho.version>0.26.0</tycho.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <forceContextQualifier>SNAPSHOT</forceContextQualifier>
 
-        <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
-        <sonar.language>java</sonar.language>
-        <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
-        <sonar.scm.disabled>true</sonar.scm.disabled>
-        <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*</sonar.exclusions>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <tycho.version>0.26.0</tycho.version>
+    <tycho.testArgLine></tycho.testArgLine>
+
+    <jacoco-version>0.7.8</jacoco-version>
+
+    <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
+    <sonar.language>java</sonar.language>
+    <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
+    <sonar.scm.disabled>true</sonar.scm.disabled>
+    <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*</sonar.exclusions>
+
 	<!-- 
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.jacoco.itReportPath>${sonar.jacoco.itReportPath}</sonar.jacoco.itReportPath>
         <sonar.jacoco.reportPath>${sonar.jacoco.reportPath}</sonar.jacoco.reportPath>
 	-->
-
   </properties>
+
   <repositories>
     <repository>
       <id>neon</id>
@@ -102,11 +111,13 @@
               <ws>win32</ws>
               <arch>x86_64</arch>
             </environment>
-            <!-- <environment>
+<!--
+            <environment>
               <os>macosx</os>
               <ws>cocoa</ws>
               <arch>x86_64</arch>
-            </environment> -->
+            </environment>
+-->
           </environments>
         </configuration>
       </plugin>
@@ -115,8 +126,42 @@
         <artifactId>sonar-maven-plugin</artifactId>
         <version>${sonar-maven-plugin.version}</version>
       </plugin>
-
     </plugins>
     <finalName>${project.artifactId}-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${forceContextQualifier}</finalName>
   </build>
+
+
+
+
+  <profiles>
+    <profile>
+      <id>jacoco</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco-version}</version>
+            <executions>
+              <execution>
+                <id>pre-unit-test</id>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+              <execution>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
 </project>
