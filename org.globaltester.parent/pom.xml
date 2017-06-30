@@ -14,9 +14,13 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <tycho.version>0.26.0</tycho.version>
-    <tycho.testArgLine></tycho.testArgLine>
+    <tycho.testArgLine>-Xmx3G</tycho.testArgLine>
 
     <jacoco-version>0.7.8</jacoco-version>
+
+    <junit.version>4.11</junit.version>
+    <maven-surefire.version>2.19</maven-surefire.version>
+    <argLine>-Xmx3G</argLine>
 
     <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
     <sonar.language>java</sonar.language>
