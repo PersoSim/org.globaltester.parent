@@ -26,7 +26,7 @@
     <sonar.language>java</sonar.language>
     <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
     <sonar.scm.disabled>true</sonar.scm.disabled>
-    <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*</sonar.exclusions>
+    <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*,**/simulator/legacy/**</sonar.exclusions>
 
 	<!-- 
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
