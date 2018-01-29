@@ -17,6 +17,9 @@
     <tycho.testArgLine>-Xmx3G</tycho.testArgLine>
 
     <jacoco-version>0.7.8</jacoco-version>
+    <jacoco.outputDir>${project.basedir}/../../jacoco</jacoco.outputDir>
+    <jacoco.out.utPath>${jacoco.outputDir}/jacoco-ut.exec</jacoco.out.utPath>
+    <jacoco.out.itPath>${jacoco.outputDir}/jacoco-it.exec</jacoco.out.itPath>
 
     <junit.version>4.11</junit.version>
     <maven-surefire.version>2.19</maven-surefire.version>
@@ -28,12 +31,9 @@
     <sonar.scm.disabled>true</sonar.scm.disabled>
     <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*,**/simulator/legacy/**,**/javacard/**,**/javacardx/**</sonar.exclusions>
 
-	<!-- 
-        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.jacoco.itReportPath>${sonar.jacoco.itReportPath}</sonar.jacoco.itReportPath>
-        <sonar.jacoco.reportPath>${sonar.jacoco.reportPath}</sonar.jacoco.reportPath>
-	-->
+    <sonar.jacoco.reportPath>${jacoco.out.utPath}</sonar.jacoco.reportPath>
+    <sonar.jacoco.itReportPath>${jacoco.out.itPath}</sonar.jacoco.itReportPath>
+
   </properties>
 
   <repositories>
@@ -129,6 +129,12 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>${sonar-maven-plugin.version}</version>
+        <configuration>
+          <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+          <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+          <sonar.jacoco.reportPath>${jacoco.out.utPath}</sonar.jacoco.reportPath>
+          <sonar.jacoco.itReportPath>${jacoco.out.itPath}</sonar.jacoco.itReportPath>
+        </configuration>
       </plugin>
     </plugins>
     <finalName>${project.artifactId}-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${forceContextQualifier}</finalName>
@@ -155,11 +161,18 @@
                 <goals>
                   <goal>prepare-agent</goal>
                 </goals>
+                <configuration>
+                  <destFile>${jacoco.out.utPath}</destFile>
+                </configuration>
               </execution>
               <execution>
+                <id>pre-integration-test</id>
                 <goals>
-                  <goal>prepare-agent</goal>
+                  <goal>prepare-agent-integration</goal>
                 </goals>
+                <configuration>
+                  <destFile>${jacoco.out.itPath}</destFile>
+                </configuration>
               </execution>
             </executions>
           </plugin>
