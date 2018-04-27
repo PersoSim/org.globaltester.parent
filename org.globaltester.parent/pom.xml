@@ -27,7 +27,7 @@
 
     <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
     <sonar.language>java</sonar.language>
-    <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
+    <sonar-maven-plugin.version>3.4.0.905</sonar-maven-plugin.version>
     <sonar.scm.disabled>true</sonar.scm.disabled>
     <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*,**/simulator/legacy/**,**/javacard/**,**/javacardx/**</sonar.exclusions>
 
