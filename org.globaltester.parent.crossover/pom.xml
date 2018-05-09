@@ -12,25 +12,34 @@
   <artifactId>org.globaltester.parent.crossover</artifactId>
   <version>3.2.4-SNAPSHOT</version>
   <packaging>pom</packaging>
+
+  <profiles>
+    <profile>
+      <id>tycho-surefire</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
   
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-surefire-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <configuration>
-          <includes>
-            <include>**/*Test.class</include>
-            <include>**/*Crossover.class</include>
-          </includes>
-	  <useUIHarness>true</useUIHarness>
-	  <product>org.globaltester.platform.product</product>
-	  <systemProperties>
-	    <org.globaltester.control.soap.port>${org.globaltester.control.soap.port}</org.globaltester.control.soap.port>
-          </systemProperties>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-surefire-plugin</artifactId>
+            <version>${tycho.version}</version>
+            <configuration>
+              <includes>
+                <include>**/*Test.class</include>
+                <include>**/*Crossover.class</include>
+              </includes>
+              <useUIHarness>true</useUIHarness>
+              <product>org.globaltester.platform.product</product>
+              <systemProperties>
+                <org.globaltester.control.soap.port>${org.globaltester.control.soap.port}</org.globaltester.control.soap.port>
+              </systemProperties>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
