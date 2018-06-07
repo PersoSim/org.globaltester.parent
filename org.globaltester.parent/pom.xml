@@ -29,7 +29,7 @@
     <sonar.language>java</sonar.language>
     <sonar-maven-plugin.version>3.4.0.905</sonar-maven-plugin.version>
     <sonar.scm.disabled>true</sonar.scm.disabled>
-    <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*,**/simulator/legacy/**,**/javacard/**,**/javacardx/**</sonar.exclusions>
+    <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*,**/simulator/legacy/**,**/javacard/**,**/javacardx/**,**/gen/**</sonar.exclusions>
 
     <sonar.jacoco.reportPath>${jacoco.out.utPath}</sonar.jacoco.reportPath>
     <sonar.jacoco.itReportPath>${jacoco.out.itPath}</sonar.jacoco.itReportPath>
