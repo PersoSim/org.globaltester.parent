@@ -90,8 +90,8 @@
 							</dependencies>
 							<repositories>
 								<repository>
-									<id>neon</id>
-									<url>http://download.eclipse.org/releases/neon</url>
+									<id>oxygen</id>
+									<url>http://download.eclipse.org/releases/oxygen</url>
 									<layout>p2</layout>
 								</repository>
 							</repositories>
