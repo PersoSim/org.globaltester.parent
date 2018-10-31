@@ -14,16 +14,16 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <tycho.version>1.2.0</tycho.version>
-    <tycho.testArgLine>-Xmx3G</tycho.testArgLine>
+    <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true</tycho.testArgLine>
 
     <jacoco-version>0.7.8</jacoco-version>
     <jacoco.outputDir>${project.basedir}/../../jacoco</jacoco.outputDir>
     <jacoco.out.utPath>${jacoco.outputDir}/jacoco-ut.exec</jacoco.out.utPath>
     <jacoco.out.itPath>${jacoco.outputDir}/jacoco-it.exec</jacoco.out.itPath>
 
-    <junit.version>4.11</junit.version>
-    <maven-surefire.version>2.19</maven-surefire.version>
-    <argLine>-Xmx3G</argLine>
+    <junit.version>4.12</junit.version>
+    <maven-surefire.version>2.22.1</maven-surefire.version>
+    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 
     <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
     <sonar.language>java</sonar.language>
