@@ -31,6 +31,7 @@
             <phase>test</phase>
             <configuration>
               <testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+              <forkCount>0</forkCount>
               <argLine>@{argLine} -javaagent:../../org.globaltester.lib.jmockit/org.globaltester.lib.jmockit/jmockit.jar</argLine>
             </configuration>
             <goals>
