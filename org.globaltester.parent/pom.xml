@@ -12,11 +12,16 @@
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-
-    <tycho.version>1.2.0</tycho.version>
+	
+	<!-- From 3.x on Tycho requires Java 17 as a runtime VM, but you can still compile code for older releases. -->
+	<!-- https://github.com/eclipse-tycho/tycho/blob/main/RELEASE_NOTES.md -->
+    <!-- <tycho.version>1.2.0</tycho.version> -->
+    <!-- <tycho.version>2.7.5</tycho.version> -->
+    <tycho.version>4.0.4</tycho.version>
     <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true</tycho.testArgLine>
 
-    <jacoco-version>0.7.8</jacoco-version>
+    <!-- <jacoco-version>0.7.8</jacoco-version> -->
+    <jacoco-version>0.8.11</jacoco-version>
     <jacoco.outputDir>${project.basedir}/../../jacoco</jacoco.outputDir>
     <jacoco.out.utPath>${jacoco.outputDir}/jacoco-ut.exec</jacoco.out.utPath>
     <jacoco.out.itPath>${jacoco.outputDir}/jacoco-it.exec</jacoco.out.itPath>
@@ -58,6 +63,12 @@
         <version>${tycho.version}</version>
         <configuration>
           <compilerArgument>-err:-forbidden</compilerArgument>
+       	  <compilerArgs>
+            <arg>--module-path</arg>
+            <arg>${java.home}/jmods</arg>
+            <arg>--add-modules</arg>
+            <arg>java.smartcardio</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
@@ -114,13 +125,24 @@
               <arch>x86_64</arch>
             </environment>
           </environments>
-          <target>
+          <executionEnvironment>JavaSE-1.8</executionEnvironment>
+          <target>		
             <artifact>
               <groupId>org.globaltester</groupId>
               <artifactId>org.globaltester.parent.target</artifactId>
               <version>${project.parent.version}</version>
             </artifact>
           </target>
+          <!-- <pomDependencies>consider</pomDependencies> -->
+          <dependency-resolution>
+            <extraRequirements>
+              <requirement>
+                <type>eclipse-plugin</type>
+                <id>org.globaltester.lib.jaxws</id>
+                <versionRange>0.0.0</versionRange>
+              </requirement>
+            </extraRequirements>
+          </dependency-resolution>
         </configuration>
       </plugin>
       <plugin>

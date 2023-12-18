@@ -5,7 +5,7 @@
     <groupId>org.globaltester</groupId>
     <artifactId>org.globaltester.parent</artifactId>
     <version>3.9.0-SNAPSHOT</version>
-    <relativePath>../../org.globaltester.parent/org.globaltester.parent/</relativePath>
+    <relativePath>../org.globaltester.parent/</relativePath>
   </parent>
   <groupId>org.globaltester</groupId>
   <artifactId>org.globaltester.parent.test</artifactId>
