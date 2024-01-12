@@ -18,7 +18,7 @@
     <!-- <tycho.version>1.2.0</tycho.version> -->
     <!-- <tycho.version>2.7.5</tycho.version> -->
     <tycho.version>4.0.4</tycho.version>
-    <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true</tycho.testArgLine>
+    <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</tycho.testArgLine>
 
     <!-- <jacoco-version>0.7.8</jacoco-version> -->
     <jacoco-version>0.8.11</jacoco-version>
@@ -26,9 +26,11 @@
     <jacoco.out.utPath>${jacoco.outputDir}/jacoco-ut.exec</jacoco.out.utPath>
     <jacoco.out.itPath>${jacoco.outputDir}/jacoco-it.exec</jacoco.out.itPath>
 
-    <junit.version>4.12</junit.version>
-    <maven-surefire.version>2.22.1</maven-surefire.version>
-    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+    <!-- <junit.version>4.12</junit.version> -->
+    <junit.version>4.13.2</junit.version>
+    <!-- <maven-surefire.version>2.22.1</maven-surefire.version> -->
+    <maven-surefire.version>2.22.2</maven-surefire.version>
+    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</argLine>
 
     <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
     <sonar.language>java</sonar.language>
