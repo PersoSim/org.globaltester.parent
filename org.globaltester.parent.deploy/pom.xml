@@ -13,26 +13,16 @@
 	<packaging>pom</packaging>
 	
 	<properties>
-		<productDestination1>${project.build.directory}/products/${project.artifactId}/win32/win32/x86</productDestination1>
+		<productDestination1>${project.build.directory}/products/${project.artifactId}/win32/win32/x86_64</productDestination1>
 		<p2.os1>win32</p2.os1>
 		<p2.ws1>win32</p2.ws1>
-		<p2.arch1>x86</p2.arch1>
-		<assembly1>${project.parent.basedir}/assembly-win32-win32-x86.xml</assembly1>
-		<productDestination2>${project.build.directory}/products/${project.artifactId}/win32/win32/x86_64</productDestination2>
-		<p2.os2>win32</p2.os2>
-		<p2.ws2>win32</p2.ws2>
+		<p2.arch1>x86_64</p2.arch1>
+		<assembly1>${project.parent.basedir}/assembly-win32-win32-x86_64.xml</assembly1>
+		<productDestination2>${project.build.directory}/products/${project.artifactId}/linux/gtk/x86_64</productDestination2>
+		<p2.os2>linux</p2.os2>
+		<p2.ws2>gtk</p2.ws2>
 		<p2.arch2>x86_64</p2.arch2>
-		<assembly2>${project.parent.basedir}/assembly-win32-win32-x86_64.xml</assembly2>
-		<productDestination3>${project.build.directory}/products/${project.artifactId}/linux/gtk/x86</productDestination3>
-		<p2.os3>linux</p2.os3>
-		<p2.ws3>gtk</p2.ws3>
-		<p2.arch3>x86</p2.arch3>
-		<assembly3>${project.parent.basedir}/assembly-linux-gtk-x86.xml</assembly3>
-		<productDestination4>${project.build.directory}/products/${project.artifactId}/linux/gtk/x86_64</productDestination4>
-		<p2.os4>linux</p2.os4>
-		<p2.ws4>gtk</p2.ws4>
-		<p2.arch4>x86_64</p2.arch4>
-		<assembly4>${project.parent.basedir}/assembly-linux-gtk-x86_64.xml</assembly4>
+		<assembly2>${project.parent.basedir}/assembly-linux-gtk-x86_64.xml</assembly2>
 	</properties>
 
 	<profiles>
@@ -76,7 +66,7 @@
 									<type>eclipse-plugin</type>
 								</dependency>
 								<dependency>
-									<artifactId>org.eclipse.equinox.ds</artifactId>
+									<artifactId>org.apache.felix.scr</artifactId>
 									<type>eclipse-plugin</type>
 								</dependency>
 								<dependency>
@@ -90,8 +80,8 @@
 							</dependencies>
 							<repositories>
 								<repository>
-									<id>photon</id>
-									<url>http://download.eclipse.org/releases/photon</url>
+									<id>2023-12</id>
+									<url>https://download.eclipse.org/releases/2023-12</url>
 									<layout>p2</layout>
 								</repository>
 							</repositories>
@@ -166,74 +156,6 @@
 									</applicationsArgs>
 								</configuration>
 							</execution>
-							<execution>
-								<goals>
-									<goal>eclipse-run</goal>
-								</goals>
-								<phase>prepare-package</phase>
-								<id>prepare-product-3</id>
-								<configuration>
-									<argLine>-Declipse.p2.mirrors=false</argLine>
-									<applicationsArgs>
-										<args>-consoleLog</args>
-										<args>-application</args>
-										<args>org.eclipse.equinox.p2.director</args>
-										<args>-destination</args>
-										<args>${productDestination3}</args>
-										<args>-repository</args>
-										<args>${platformRepository}</args>
-										<args>-installIU</args>
-										<args>${productIU}</args>
-										<args>-tag</args>
-										<args>InitialState</args>
-										<args>-profile</args>
-										<args>${profile}</args>
-										<args>-profileProperties</args>
-										<args>org.eclipse.update.install.features=true</args>
-										<args>-p2.os</args>
-										<args>${p2.os3}</args>
-										<args>-p2.ws</args>
-										<args>${p2.ws3}</args>
-										<args>-p2.arch</args>
-										<args>${p2.arch3}</args>
-										<args>-roaming</args>
-									</applicationsArgs>
-								</configuration>
-							</execution>
-							<execution>
-								<goals>
-									<goal>eclipse-run</goal>
-								</goals>
-								<phase>prepare-package</phase>
-								<id>prepare-product-4</id>
-								<configuration>
-									<argLine>-Declipse.p2.mirrors=false</argLine>
-									<applicationsArgs>
-										<args>-consoleLog</args>
-										<args>-application</args>
-										<args>org.eclipse.equinox.p2.director</args>
-										<args>-destination</args>
-										<args>${productDestination4}</args>
-										<args>-repository</args>
-										<args>${platformRepository}</args>
-										<args>-installIU</args>
-										<args>${productIU}</args>
-										<args>-tag</args>
-										<args>InitialState</args>
-										<args>-profile</args>
-										<args>${profile}</args>
-										<args>-profileProperties</args>
-										<args>org.eclipse.update.install.features=true</args>
-										<args>-p2.os</args>
-										<args>${p2.os4}</args>
-										<args>-p2.ws</args>
-										<args>${p2.ws4}</args>
-										<args>-p2.arch</args>
-										<args>${p2.arch4}</args>
-										<args>-roaming</args>
-									</applicationsArgs>
-								</configuration>
-							</execution>
 							<!-- Install feature into instantiated products -->
 							<execution>
 								<goals>
@@ -285,56 +207,6 @@
 									</applicationsArgs>
 								</configuration>
 							</execution>
-							<execution>
-								<goals>
-									<goal>eclipse-run</goal>
-								</goals>
-								<phase>prepare-package</phase>
-								<id>install-feature-3</id>
-								<configuration>
-									<argLine>-Declipse.p2.mirrors=false</argLine>
-									<applicationsArgs>
-										<args>-consoleLog</args>
-										<args>-application</args>
-										<args>org.eclipse.equinox.p2.director</args>
-										<args>-destination</args>
-										<args>${productDestination3}</args>
-										<args>-repository</args>
-										<args>${featureRepository}</args>
-										<args>-installIU</args>
-										<args>${featureIU}</args>
-										<args>-tag</args>
-										<args>AddFeature</args>
-										<args>-profile</args>
-										<args>${profile}</args>
-									</applicationsArgs>
-								</configuration>
-							</execution>
-							<execution>
-								<goals>
-									<goal>eclipse-run</goal>
-								</goals>
-								<phase>prepare-package</phase>
-								<id>install-feature-4</id>
-								<configuration>
-									<argLine>-Declipse.p2.mirrors=false</argLine>
-									<applicationsArgs>
-										<args>-consoleLog</args>
-										<args>-application</args>
-										<args>org.eclipse.equinox.p2.director</args>
-										<args>-destination</args>
-										<args>${productDestination4}</args>
-										<args>-repository</args>
-										<args>${featureRepository}</args>
-										<args>-installIU</args>
-										<args>${featureIU}</args>
-										<args>-tag</args>
-										<args>AddFeature</args>
-										<args>-profile</args>
-										<args>${profile}</args>
-									</applicationsArgs>
-								</configuration>
-							</execution>
 						</executions>
 					</plugin>
 				</plugins>
@@ -366,8 +238,6 @@
 									<descriptors>
 										<descriptor>${assembly1}</descriptor>
 										<descriptor>${assembly2}</descriptor>
-										<descriptor>${assembly3}</descriptor>
-										<descriptor>${assembly4}</descriptor>
 									</descriptors>
 								</configuration>
 							</execution>

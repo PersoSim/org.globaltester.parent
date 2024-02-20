@@ -10,8 +10,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <forceContextQualifier>SNAPSHOT</forceContextQualifier>
 
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+	<!--
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    -->
+    <maven.compiler.release>17</maven.compiler.release> <!-- since JDK 9 -->
 	
 	<!-- From 3.x on Tycho requires Java 17 as a runtime VM, but you can still compile code for older releases. -->
 	<!-- https://github.com/eclipse-tycho/tycho/blob/main/RELEASE_NOTES.md -->
@@ -104,17 +107,7 @@
             <environment>
               <os>linux</os>
               <ws>gtk</ws>
-              <arch>x86</arch>
-            </environment>
-            <environment>
-              <os>linux</os>
-              <ws>gtk</ws>
               <arch>x86_64</arch>
-            </environment>
-            <environment>
-              <os>win32</os>
-              <ws>win32</ws>
-              <arch>x86</arch>
             </environment>
             <environment>
               <os>win32</os>
@@ -127,7 +120,7 @@
               <arch>x86_64</arch>
             </environment>
           </environments>
-          <executionEnvironment>JavaSE-1.8</executionEnvironment>
+          <executionEnvironment>JavaSE-17</executionEnvironment>
           <target>		
             <artifact>
               <groupId>org.globaltester</groupId>
