@@ -29,7 +29,7 @@ node {
 
 
   stage 'Build'
-  def mvnHome = tool 'M305'
+  def mvnHome = tool 'maven-3.9.6'
   sh "cd ${PROJECT_NAME}/${PROJECT_NAME}.releng/ && ${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean verify"
 
 }

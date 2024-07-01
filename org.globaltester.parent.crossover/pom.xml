@@ -4,13 +4,13 @@
   <parent>
     <groupId>org.globaltester</groupId>
     <artifactId>org.globaltester.parent</artifactId>
-    <version>3.9.0-SNAPSHOT</version>
+    <version>3.10.0-SNAPSHOT</version>
     <relativePath>../../org.globaltester.parent/org.globaltester.parent/</relativePath>
   </parent>
 
   <groupId>org.globaltester</groupId>
   <artifactId>org.globaltester.parent.crossover</artifactId>
-  <version>3.9.0-SNAPSHOT</version>
+  <version>3.10.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <profiles>
@@ -28,7 +28,7 @@
             <version>${tycho.version}</version>
             <configuration>
               <includes>
-                <include>**/*Test.class</include>
+                <!-- <include>**/*Test.class</include> -->
                 <include>**/*Crossover.class</include>
                 <include>**/*Integration.class</include>
               </includes>
@@ -37,6 +37,7 @@
               <systemProperties>
                 <org.globaltester.control.soap.port>${org.globaltester.control.soap.port}</org.globaltester.control.soap.port>
               </systemProperties>
+              <!-- <reactorConcurrencyLevel>2</reactorConcurrencyLevel> -->
             </configuration>
           </plugin>
         </plugins>

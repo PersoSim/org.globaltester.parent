@@ -3,27 +3,37 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.globaltester</groupId>
   <artifactId>org.globaltester.parent</artifactId>
-  <version>3.9.0-SNAPSHOT</version>
+  <version>3.10.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <forceContextQualifier>SNAPSHOT</forceContextQualifier>
 
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+	<!--
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    -->
+    <maven.compiler.release>17</maven.compiler.release> <!-- since JDK 9 -->
+	
+	<!-- From 3.x on Tycho requires Java 17 as a runtime VM, but you can still compile code for older releases. -->
+	<!-- https://github.com/eclipse-tycho/tycho/blob/main/RELEASE_NOTES.md -->
+    <!-- <tycho.version>1.2.0</tycho.version> -->
+    <!-- <tycho.version>2.7.5</tycho.version> -->
+    <tycho.version>4.0.4</tycho.version>
+    <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</tycho.testArgLine>
 
-    <tycho.version>1.2.0</tycho.version>
-    <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true</tycho.testArgLine>
-
-    <jacoco-version>0.7.8</jacoco-version>
+    <!-- <jacoco-version>0.7.8</jacoco-version> -->
+    <jacoco-version>0.8.11</jacoco-version>
     <jacoco.outputDir>${project.basedir}/../../jacoco</jacoco.outputDir>
     <jacoco.out.utPath>${jacoco.outputDir}/jacoco-ut.exec</jacoco.out.utPath>
     <jacoco.out.itPath>${jacoco.outputDir}/jacoco-it.exec</jacoco.out.itPath>
 
-    <junit.version>4.12</junit.version>
-    <maven-surefire.version>2.22.1</maven-surefire.version>
-    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+    <!-- <junit.version>4.12</junit.version> -->
+    <junit.version>4.13.2</junit.version>
+    <!-- <maven-surefire.version>2.22.1</maven-surefire.version> -->
+    <maven-surefire.version>2.22.2</maven-surefire.version>
+    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</argLine>
 
     <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
     <sonar.language>java</sonar.language>
@@ -36,13 +46,6 @@
 
   </properties>
 
-  <repositories>
-    <repository>
-      <id>eclipse_main</id>
-      <url>http://download.eclipse.org/releases/photon</url>
-      <layout>p2</layout>
-    </repository>
-  </repositories>
   <build>
     <plugins>
       <plugin>
@@ -65,6 +68,12 @@
         <version>${tycho.version}</version>
         <configuration>
           <compilerArgument>-err:-forbidden</compilerArgument>
+       	  <compilerArgs>
+            <arg>--module-path</arg>
+            <arg>${java.home}/jmods</arg>
+            <arg>--add-modules</arg>
+            <arg>java.smartcardio</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
@@ -82,12 +91,12 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-p2-repository-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <configuration>
-          <includeAllDependencies>true</includeAllDependencies>
-        </configuration>
+         <groupId>org.eclipse.tycho</groupId>
+         <artifactId>tycho-p2-repository-plugin</artifactId>
+         <version>${tycho.version}</version>
+         <configuration>
+            <includeAllDependencies>true</includeAllDependencies>
+         </configuration>
       </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
@@ -98,17 +107,7 @@
             <environment>
               <os>linux</os>
               <ws>gtk</ws>
-              <arch>x86</arch>
-            </environment>
-            <environment>
-              <os>linux</os>
-              <ws>gtk</ws>
               <arch>x86_64</arch>
-            </environment>
-            <environment>
-              <os>win32</os>
-              <ws>win32</ws>
-              <arch>x86</arch>
             </environment>
             <environment>
               <os>win32</os>
@@ -121,6 +120,24 @@
               <arch>x86_64</arch>
             </environment>
           </environments>
+          <executionEnvironment>JavaSE-17</executionEnvironment>
+          <target>		
+            <artifact>
+              <groupId>org.globaltester</groupId>
+              <artifactId>org.globaltester.parent.target</artifactId>
+              <version>3.10.0-SNAPSHOT</version>
+            </artifact>
+          </target>
+          <!-- <pomDependencies>consider</pomDependencies> -->
+          <dependency-resolution>
+            <extraRequirements>
+              <requirement>
+                <type>eclipse-plugin</type>
+                <id>org.globaltester.lib.jaxws</id>
+                <versionRange>0.0.0</versionRange>
+              </requirement>
+            </extraRequirements>
+          </dependency-resolution>
         </configuration>
       </plugin>
       <plugin>
