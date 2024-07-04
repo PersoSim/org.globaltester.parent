@@ -10,40 +10,37 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <forceContextQualifier>SNAPSHOT</forceContextQualifier>
 
-	<!--
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    -->
     <maven.compiler.release>17</maven.compiler.release> <!-- since JDK 9 -->
 	
-	<!-- From 3.x on Tycho requires Java 17 as a runtime VM, but you can still compile code for older releases. -->
-	<!-- https://github.com/eclipse-tycho/tycho/blob/main/RELEASE_NOTES.md -->
-    <!-- <tycho.version>1.2.0</tycho.version> -->
-    <!-- <tycho.version>2.7.5</tycho.version> -->
-    <tycho.version>4.0.4</tycho.version>
+    <tycho.version>4.0.8</tycho.version>
     <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</tycho.testArgLine>
 
-    <!-- <jacoco-version>0.7.8</jacoco-version> -->
-    <jacoco-version>0.8.11</jacoco-version>
+    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</argLine>
+
+    <jacoco-version>0.8.12</jacoco-version>
     <jacoco.outputDir>${project.basedir}/../../jacoco</jacoco.outputDir>
     <jacoco.out.utPath>${jacoco.outputDir}/jacoco-ut.exec</jacoco.out.utPath>
     <jacoco.out.itPath>${jacoco.outputDir}/jacoco-it.exec</jacoco.out.itPath>
 
-    <!-- <junit.version>4.12</junit.version> -->
-    <junit.version>4.13.2</junit.version>
-    <!-- <maven-surefire.version>2.22.1</maven-surefire.version> -->
-    <maven-surefire.version>2.22.2</maven-surefire.version>
-    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</argLine>
-
-    <sonar-jacoco-listeners.version>4.2.1.6971</sonar-jacoco-listeners.version>
     <sonar.language>java</sonar.language>
-    <sonar-maven-plugin.version>3.4.0.905</sonar-maven-plugin.version>
+    <sonar-maven-plugin.version>4.0.0.4121</sonar-maven-plugin.version>
     <sonar.scm.disabled>true</sonar.scm.disabled>
     <sonar.exclusions>**/com4j/**,**/comprion/**,**/*Test.java,**/*rossover*,**/simulator/legacy/**,**/javacard/**,**/javacardx/**,**/gen/**</sonar.exclusions>
 
+    <sonar.core.coveragePlugin>jacoco</sonar.core.coveragePlugin>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
     <sonar.jacoco.reportPath>${jacoco.out.utPath}</sonar.jacoco.reportPath>
     <sonar.jacoco.itReportPath>${jacoco.out.itPath}</sonar.jacoco.itReportPath>
 
+    <junit.version>4.13.2</junit.version>
+    <!-- <maven-surefire.version>2.22.2</maven-surefire.version> -->
+    <maven-surefire.version>3.3.0</maven-surefire.version>
+    <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
+    
+    <dependency-check-maven.version>10.0.1</dependency-check-maven.version>
+    <cyclonedx-maven-plugin.version>2.8.0</cyclonedx-maven-plugin.version>
+    <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
+    <markdown-page-generator-plugin.version>0.22.14</markdown-page-generator-plugin.version>
   </properties>
 
   <build>
@@ -51,7 +48,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.6</version>
+        <version>${build-helper-maven-plugin.version}</version>
         <executions>
           <execution>
             <id>parse-version</id>
@@ -144,12 +141,6 @@
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
         <version>${sonar-maven-plugin.version}</version>
-        <configuration>
-          <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-          <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-          <sonar.jacoco.reportPath>${jacoco.out.utPath}</sonar.jacoco.reportPath>
-          <sonar.jacoco.itReportPath>${jacoco.out.itPath}</sonar.jacoco.itReportPath>
-        </configuration>
       </plugin>
     </plugins>
     <finalName>${project.artifactId}-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${forceContextQualifier}</finalName>
