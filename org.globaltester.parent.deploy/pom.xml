@@ -36,7 +36,7 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.eclipse.tycho.extras</groupId>
+						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>tycho-eclipse-plugin</artifactId>
 						<version>${tycho.version}</version>
 						<configuration>
