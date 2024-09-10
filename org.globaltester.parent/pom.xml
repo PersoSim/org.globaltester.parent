@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.globaltester</groupId>
   <artifactId>org.globaltester.parent</artifactId>
-  <version>3.10.0-SNAPSHOT</version>
+  <version>3.10.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -127,7 +127,7 @@
             <artifact>
               <groupId>org.globaltester</groupId>
               <artifactId>org.globaltester.parent.target</artifactId>
-              <version>3.10.0-SNAPSHOT</version>
+              <version>3.10.1-SNAPSHOT</version>
             </artifact>
           </target>
           <!-- <pomDependencies>consider</pomDependencies> -->
