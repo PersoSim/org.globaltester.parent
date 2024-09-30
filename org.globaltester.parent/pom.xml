@@ -13,9 +13,9 @@
     <maven.compiler.release>17</maven.compiler.release> <!-- since JDK 9 -->
 	
     <tycho.version>4.0.8</tycho.version>
-    <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</tycho.testArgLine>
+    <tycho.testArgLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens=java.base/java.security=ALL-UNNAMED --add-opens=java.base/javax.crypto.spec=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.smartcardio/sun.security.smartcardio=ALL-UNNAMED</tycho.testArgLine>
 
-    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens java.base/java.security=ALL-UNNAMED --add-opens java.base/javax.crypto.spec=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED</argLine>
+    <argLine>-Xmx3G -Djdk.net.URLClassPath.disableClassPathURLCheck=true --add-opens=java.base/java.security=ALL-UNNAMED --add-opens=java.base/javax.crypto.spec=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.smartcardio/sun.security.smartcardio=ALL-UNNAMED</argLine>
 
     <jacoco-version>0.8.12</jacoco-version>
     <jacoco.outputDir>${project.basedir}/../../jacoco</jacoco.outputDir>
