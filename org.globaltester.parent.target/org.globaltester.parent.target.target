@@ -57,5 +57,15 @@
 				</dependency>
 			</dependencies>
 		</location>
+		<location includeDependencyDepth="infinite" includeDependencyScopes="compile" label="com.fasterxml.jackson.core.jackson-databind" missingManifest="generate" type="Maven">
+			<dependencies>
+				<dependency>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-databind</artifactId>
+					<version>2.18.0</version>
+					<type>jar</type>
+				</dependency>
+			</dependencies>
+		</location>
 	</locations>
 </target>
